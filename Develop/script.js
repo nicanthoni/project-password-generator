@@ -59,7 +59,7 @@ function generatePassword() {
   }
 
   for (i = 0; i < passwordLength; i++) {
-    finalPassword.push(selectedCriteria[Math.floor(Math.random() * passwordLength)])
+    finalPassword += (selectedCriteria[Math.floor(Math.random() * passwordLength)])
   }
 
   // FOR loop above to loop through array x amount depending on password length. Each time, randomly picksout a characters from the slecectedCriteria variable.
