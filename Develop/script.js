@@ -5,7 +5,7 @@ var upperCase = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
 var lowerCase = "qwertyuiopasdfghjklzxcvbnm".split("");
 var numbers = "1234567890".split("");
 // .split helps to separate these as individual characters instead of one string
-var selectedCriteria = [];
+
 
 
 
@@ -25,11 +25,12 @@ function writePassword() {
 }
 
 function generatePassword() {
+  var selectedCriteria = [];
   var finalPassword = "";
-  var passwordLength = window.prompt('How many characters would you like this password to be?');
+  var passwordLength = parseInt(window.prompt('How many characters would you like this password to be?'));
   while (passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength)) {
     alert('The password needs to be between 8 and 128 characters.')
-    passwordLength = window.prompt('How many characters would you like this password to be?');
+    passwordLength = parseInt(window.prompt('How many characters would you like this password to be?'));
   }
   var specialChoice = window.confirm('Would you like to use special characters?');
   var uppercaseChoice = window.confirm('Would you like to use uppercase letters?');
@@ -38,36 +39,38 @@ function generatePassword() {
 
   while (!specialChoice && !uppercaseChoice && !lowercaseChoice && !numbersChoice) {
     alert('You will need to select at least (1) character type. Lets try that again!')
-    var specialChoice = window.confirm('Would you like to use special characters?');
-    var uppercaseChoice = window.confirm('Would you like to use uppercase letters?');
-    var lowercaseChoice = window.confirm('Would you like to use lower case letters?');
-    var numbersChoice = window.confirm('Would you like to include numbers?');
+    specialChoice = window.confirm('Would you like to use special characters?');
+    uppercaseChoice = window.confirm('Would you like to use uppercase letters?');
+    lowercaseChoice = window.confirm('Would you like to use lower case letters?');
+    numbersChoice = window.confirm('Would you like to include numbers?');
   }
   // Do another while loop (above - did this), to consider what happens if user says 'no' to all of them -> alert them and reconfirm choices
   // write if statement (below -  did this) for each (4) to push into created array - use either the push array into another array method,
   if (specialChoice) {
-    selectedCriteria.push(specialCharacters);
+    selectedCriteria = selectedCriteria.concat(specialCharacters);
   }
   if (uppercaseChoice) {
-    selectedCriteria.push(upperCase);
+    selectedCriteria = selectedCriteria.concat(upperCase);
   }
   if (lowercaseChoice) {
-    selectedCriteria.push(lowerCase);
+    selectedCriteria = selectedCriteria.concat(lowerCase);
   }
   if (numbersChoice) {
-    selectedCriteria.push(numbers);
+    selectedCriteria = selectedCriteria.concat(numbers);
   }
+  // sonsole log these just before the loop, so tat way they are defined as they are BEFORE entering the loop
+  console.log(selectedCriteria);
+  console.log(typeof passwordLength);
+  console.log(numbers.length);
 
   for (i = 0; i < passwordLength; i++) {
-    finalPassword += (selectedCriteria[Math.floor(Math.random() * passwordLength)])
+    finalPassword += (selectedCriteria[Math.floor(Math.random() * selectedCriteria.length)])
   }
 
   // FOR loop above to loop through array x amount depending on password length. Each time, randomly picksout a characters from the slecectedCriteria variable.
   // Each randomly selected character, ADD it into the finalPassword variable.
   return finalPassword;
 }
-
-
 
 
 // Add event listener to generate button
