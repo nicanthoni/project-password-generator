@@ -7,9 +7,6 @@ var numbers = "1234567890".split("");
 // .split helps to separate these as individual characters instead of one string
 
 
-
-
-
 // Get references to the #generate element
 // document = html  ,   querySelector = finds the element the id is attached to
 var generateBtn = document.querySelector("#generate");
@@ -58,7 +55,7 @@ function generatePassword() {
   if (numbersChoice) {
     selectedCriteria = selectedCriteria.concat(numbers);
   }
-  // sonsole log these just before the loop, so tat way they are defined as they are BEFORE entering the loop
+  // console log these just before the loop, so tat way they are defined as they are BEFORE entering the loop
   console.log(selectedCriteria);
   console.log(typeof passwordLength);
   console.log(numbers.length);
