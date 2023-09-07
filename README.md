@@ -19,7 +19,7 @@ JavaScript, HTML, and CSS
 
 ## Deployed application link
 
-Deplyed application: 
+Deplyed application: https://nicanthoni.github.io/project-password-generator/
 
 
 ## How to use?
